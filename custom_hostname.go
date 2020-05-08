@@ -82,10 +82,10 @@ type CustomHostnameListResponse struct {
 // hostname in the given zone.
 //
 // API reference: https://api.cloudflare.com/#custom-hostname-for-a-zone-update-custom-hostname-configuration
-func (api *API) UpdateCustomHostnameSSL(zoneID string, customHostnameID string, ssl CustomHostnameSSL) (*CustomHostnameResponse, error) {
+func (api *API) UpdateCustomHostnameSSL(zoneID string, customHostnameID string, ch CustomHostname) (*CustomHostnameResponse, error) {
 	uri := "/zones/" + zoneID + "/custom_hostnames/" + customHostnameID
-	res, err := api.makeRequest("PATCH", uri, ssl)
-	if err != nil {
+	res, err := api.makeRequest("PATCH", uri, ch)
+	if err != nil {tw
 		return nil, errors.Wrap(err, errMakeRequestError)
 	}
 
