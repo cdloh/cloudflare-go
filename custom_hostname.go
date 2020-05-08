@@ -85,7 +85,7 @@ type CustomHostnameListResponse struct {
 func (api *API) UpdateCustomHostnameSSL(zoneID string, customHostnameID string, ch CustomHostname) (*CustomHostnameResponse, error) {
 	uri := "/zones/" + zoneID + "/custom_hostnames/" + customHostnameID
 	res, err := api.makeRequest("PATCH", uri, ch)
-	if err != nil {tw
+	if err != nil {
 		return nil, errors.Wrap(err, errMakeRequestError)
 	}
 
