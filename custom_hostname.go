@@ -78,7 +78,7 @@ type CustomHostnameListResponse struct {
 	ResultInfo `json:"result_info"`
 }
 
-// CustomHostnameFallbackOrigin represents a Fallback Origin for Custom Hostnames
+// CustomHostnameFallbackOrigin represents a Custom Hostnames Fallback Origin
 type CustomHostnameFallbackOrigin struct {
 	Origin string   `json:"origin,omitempty"`
 	Status string   `json:"status,omitempty"`
@@ -216,7 +216,7 @@ func (api *API) CustomHostnameIDByName(zoneID string, hostname string) (string, 
 // API reference: https://api.cloudflare.com/#custom-hostname-fallback-origin-for-a-zone-update-fallback-origin-for-custom-hostnames
 func (api *API) UpdateCustomHostnameFallbackOrigin(zoneID string, chfo CustomHostnameFallbackOrigin) (*CustomHostnameFallbackOriginResponse, error) {
 	uri := "/zones/" + zoneID + "/custom_hostnames/fallback_origin"
-	res, err := api.makeRequest("PATCH", uri, chfo)
+	res, err := api.makeRequest("PUT", uri, chfo)
 	if err != nil {
 		return nil, errors.Wrap(err, errMakeRequestError)
 	}
